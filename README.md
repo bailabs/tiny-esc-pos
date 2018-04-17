@@ -63,3 +63,5 @@ writePromises.push(BluetoothSerial.write(
 Promise.all(writePromises)
 .then(res => console.log(res))
 .catch(err => console.log(err.message));
+```
+
