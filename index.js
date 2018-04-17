@@ -49,7 +49,7 @@ const _ = {
      * @function
      * @return {MutableBuffer} MutableBuffer
      */
-    bufferedText: function(text, style = { size: null, align: null, weight: null, underline: null }, newline = false) {
+    bufferedText: function(text, style = { size: null, align: null, weight: null, underline: null, italicize: null }, newline = false) {
         
         const bufferedText = new Buffer();
         const { size, align, weight, underline } = style;
@@ -77,6 +77,9 @@ const _ = {
             else if(underline == 'light')   bufferedText.write(UNDERLINE_LIGHT);
             else if(underline == 'heavy')   bufferedText.write(UNDERLINE_HEAVY);        
         }
+
+        if(italicize)   bufferedText.write(ITALIC_ON);
+        else            bufferedText.write(ITALIC_OFF);
 
         bufferedText.write(text);
 
