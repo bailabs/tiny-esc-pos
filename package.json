@@ -1,6 +1,6 @@
 {
   "name": "tiny-esc-pos",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Print receipts using Bluetooth through ESC/POS serial commands.",
   "main": "index.js",
   "scripts": {
