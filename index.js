@@ -1,5 +1,12 @@
-function test() {
-    console.log("test");
-}
+'use strict';
+var Buffer = require('mutable-buffer');
 
-module.exports = test;
+var _ = {
+    INIT:   [0x1b, 0x40]
+};
+
+_.test = function() {
+    console.log('test me');
+};
+
+module.exports = _;
