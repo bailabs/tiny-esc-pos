@@ -78,8 +78,10 @@ const _ = {
             else if(underline == 'heavy')   bufferedText.write(UNDERLINE_HEAVY);        
         }
 
-        if(italicize)   bufferedText.write(ITALIC_ON);
-        else            bufferedText.write(ITALIC_OFF);
+        if(italicize != null) {
+            if(italicize)   bufferedText.write(ITALIC_ON);
+            else            bufferedText.write(ITALIC_OFF); 
+        }
 
         bufferedText.write(text);
 
