@@ -52,7 +52,7 @@ const _ = {
     bufferedText: function(text, style = { size: null, align: null, weight: null, underline: null, italicize: null }, newline = false) {
         
         const bufferedText = new Buffer();
-        const { size, align, weight, underline } = style;
+        const { size, align, weight, underline, italicize } = style;
         
         if(size) {
             if(size == 'normal')              bufferedText.write(SIZE_NORMAL);
@@ -78,10 +78,8 @@ const _ = {
             else if(underline == 'heavy')   bufferedText.write(UNDERLINE_HEAVY);        
         }
 
-        if(italicize != null) {
-            if(italicize)   bufferedText.write(ITALIC_ON);
-            else            bufferedText.write(ITALIC_OFF); 
-        }
+        if(italicize)   bufferedText.write(ITALIC_ON);
+        else            bufferedText.write(ITALIC_OFF); 
 
         bufferedText.write(text);
 
@@ -98,8 +96,15 @@ const _ = {
      * @function
      * @return {MutableBuffer} MutableBuffer
      */
-    print: function() {
-        return new Buffer().write(COMMAND_LF).join();
+    print: function(line = 0) {
+        const bufferedPrint = new Buffer();
+
+        if(line > 0) bufferedPrint.write([0x1b, 0x64, line]);
+        
+        bufferedPrint.write(COMMAND_LF);
+
+        return bufferedPrint.join();
+
     },
 
     /**
@@ -115,6 +120,16 @@ const _ = {
 
     kickCashDrawer: function() {
         return new Buffer().write(KICK_DRAWER_2).join();
+    },
+
+    bufferedBarcode: function(data) {
+        const barcode = new Buffer();
+
+        barcode.write([0x1d, 0x6b, 0x04]);
+        barcode.write(data);
+        barcode.write([0x00]);
+        
+        return barcode.join();
     }
 
 };
