@@ -49,7 +49,7 @@ const _ = {
      * @function
      * @return {MutableBuffer} MutableBuffer
      */
-    bufferedText: function(text, style = { size: null, align: null, weight: null, underline: null }) {
+    bufferedText: function(text, style = { size: null, align: null, weight: null, underline: null }, newline = false) {
         
         const bufferedText = new Buffer();
         const { size, align, weight, underline } = style;
@@ -79,6 +79,8 @@ const _ = {
         }
 
         bufferedText.write(text);
+
+        if(newline) bufferedText.write(COMMAND_LF);
 
         return bufferedText.join();
     
