@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/bailabs/tiny-esc-pos#readme",
   "dependencies": {
-    "mutable-buffer": "^2.0.3"
+    "mutable-buffer": "2.0.3"
   },
   "devDependencies": {
     "chai": "^4.1.2",
