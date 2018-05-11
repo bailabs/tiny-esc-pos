@@ -4,6 +4,7 @@ const Buffer = require('mutable-buffer');
 const COMMAND_INIT    = [0x1b, 0x40];
 const COMMAND_CUT     = [0x1d, 0x41, 0x03];
 const COMMAND_LF      = [0x0a];
+const COMMAND_HT      = [0x09];
 
 const SIZE_NORMAL     = [0x1b, 0x21, 0x00];
 const SIZE_2H         = [0x1b, 0x21, 0x10];
