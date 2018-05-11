@@ -131,6 +131,10 @@ const _ = {
         barcode.write([0x00]);
         
         return barcode.join();
+    },
+
+    bufferedHorizontalTab: function() {
+        return new Buffer().write(COMMAND_HT).join();        
     }
 
 };
